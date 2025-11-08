@@ -33,6 +33,7 @@ def score_feature_against_target(feature: pd.DataFrame,
     None.
 
     """
+    TIME_HORIZONS = [1, 5, 10, 20] #time periods to score factor against.
     feature.plot()
     plt.title('Feature over time')
     plt.show()
@@ -45,7 +46,7 @@ def score_feature_against_target(feature: pd.DataFrame,
     _plot_scatter_feature_against_target(feature, target)
 
     if raw_target_data.empty is False:
-        for end_period in [1,5,10,20]:
+        for end_period in TIME_HORIZONS:
             _plot_prediction_at_time_interval(feature, raw_target_data, end_period)
 
 def _plot_returns_from_factor(feature, target):
